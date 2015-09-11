@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="js/mustache.js"></script>
+<script src="js/polyfill.js"></script>
+<title>Services</title>
+<script>
+$(document).ready(function(){
+  var clickLink = new PageHandler();
+  clickLink.book('book-data', 'unique', 'loading-image');
+  clickLink.activeLink('book-data', 'active');
+  clickLink.defaultStatus('book-data', 'active', 'unique');
+  $(document).on('click', '.more-detail', function(event){
+	  clickLink.showPopUp(event.target.id, 'modal-container');
+  });
+  $(document).on('click', '.close', function(event){
+	  clickLink.emptyPopup('modal-container');
+  });
+  $(window).scroll(function() {
+     if($(window).scrollTop() + $(window).height() == $(document).height()) {
+    	  count++;
+    	  $('.book-data').trigger('click');
+     }
+  });
+});
+</script>
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+		  <h1>Form Example</h1>
+		   <ul class="navigation">
+		     <li data-attribute="index"><i class="fa fa-home"></i>Home</li>
+		     <li data-attribute="about"><i class="fa fa-clone"></i>About Us</li>
+		     <li class="active" data-attribute="services">Services</li>
+		     <li data-attribute="contact"><i class="fa fa-mobile"></i>Contact Us</li>
+		   </ul>
+		</header>
+	</div>
+	<div class="container">
+		<div class="aside">
+		  <ul class="book-list">
+		    <li class="book-data active" data-atribute="php"><a href="#">Php</a></li>
+		    <li class="book-data" data-atribute="java"><a href="#">Java</a></li>
+		    <li class="book-data" data-atribute="my-sql"><a href="#">Mysql</a></li>
+		  </ul>
+		</div>
+		<div class="rows" id="unique"></div>
+	</div>
+	<div id="modal-container">
+	</div>
+	<div class="loading-image"><img src="images/ajax-loader.gif"/></div>
+	<div class="footer-wrapper">
+	  <footer>
+	    <ul class="footer-links">
+	      <li>Sign Up Home</li>
+	      <li>About Us</li>
+	      <li>Services</li>
+	      <li>Contact Us</li>
+	    </ul>
+	    <ul class="social-links">
+	      <li><img src="images/facebook-icon.png"/></li>
+	      <li><img src="images/pinterest.png"/></li>
+	      <li><img src="images/twitter-icon.png"/></li>
+	    </ul>
+	    <div class="copyright">@Copyright:2015</div>
+	   </footer>
+	</div>
+	
+</body>
+</html>
